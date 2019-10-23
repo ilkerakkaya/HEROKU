@@ -60,29 +60,29 @@ app.get("/", function(req, res) {
   });
 });
 
-app.get("/:customListName", function(req, res) {
-  const customListName = _.capitalize(req.params.customListName);
+// app.get("/:customListName", function(req, res) {
+//   const customListName = _.capitalize(req.params.customListName);
 
-  List.findOne({ name: customListName }, function(err, foundList) {
-    if (!err) {
-      if (!foundList) {
-        // creative a new list
-        const list = new List({
-          name: customListName,
-          items: defaultItems
-        });
-        list.save();
-        res.redirect("/" + customListName);
-      } else {
-        // show an exsiting list
-        res.render("list", {
-          listTitle: foundList.name,
-          newListItems: foundList.items
-        });
-      }
-    }
-  });
-});
+//   List.findOne({ name: customListName }, function(err, foundList) {
+//     if (!err) {
+//       if (!foundList) {
+//         // creative a new list
+//         const list = new List({
+//           name: customListName,
+//           items: defaultItems
+//         });
+//         list.save();
+//         res.redirect("/" + customListName);
+//       } else {
+//         // show an exsiting list
+//         res.render("list", {
+//           listTitle: foundList.name,
+//           newListItems: foundList.items
+//         });
+//       }
+//     }
+//   });
+// });
 
 app.post("/", function(req, res) {
   const itemName = req.body.newItem;
