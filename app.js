@@ -144,7 +144,6 @@ if (port==null || port== ""){
   port = 3000;
 }
 
-var server = app.listen(process.env.PORT || 5000, function () {
-  var port = server.address().port;
-  console.log("Express is working on port " + port);
+app.listen(port, function() {
+  console.log("Server has started succesfully");
 });
